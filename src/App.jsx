@@ -55,6 +55,7 @@ const App = () => {
               />
             ) : (
               <video
+                loading="lazy"
                 className="w-[100%] h-[70%] rounded-lg"
                 src={View}
                 autoPlay
