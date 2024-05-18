@@ -16,25 +16,25 @@ const App = () => {
 
   return (
     <>
-      {!ready ? (
-        <div className="flex flex-col justify-center">
-          <img src={img7} alt="topimage" />
-          <p className="text-3xl text-center font-extrabold text-[#333]">
-            Are you ready to Celebrate?
-          </p>
-          <button
-            className="bg-[#ED2B5C] px-4 py-2 rounded-md mx-2 text-white font-bold text-center mt-3 text-3xl"
-            onClick={() => setReady(true)}
-          >
-            Yes <span className="text-3xl">💪🏾</span>
-          </button>
+      <div className="w-full">
+        {isVisible && <Confetti width={window.innerWidth} />}
+        <div className="text-3xl hidden sm:block">
+          Pease visit with a modile phone!
         </div>
-      ) : (
-        <div className="w-full">
-          {isVisible && <Confetti width={window.innerWidth} />}
-          <div className="text-3xl hidden sm:block">
-            Pease visit with a modile phone!
+        {!ready ? (
+          <div className="flex flex-col justify-center">
+            <img src={img7} alt="topimage" />
+            <p className="text-3xl text-center font-extrabold text-[#333]">
+              Are you ready to Celebrate?
+            </p>
+            <button
+              className="bg-[#ED2B5C] px-4 py-2 rounded-md mx-2 text-white font-bold text-center mt-3 text-3xl"
+              onClick={() => setReady(true)}
+            >
+              Yes <span className="text-3xl">💪🏾</span>
+            </button>
           </div>
+        ) : (
           <div className="sm:hidden w-[100dvw] h-[80vh] object-cover flex flex-col justify-center">
             <img
               src={isVisible ? img6 : topimage}
@@ -76,8 +76,8 @@ const App = () => {
               )}
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
