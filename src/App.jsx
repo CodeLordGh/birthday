@@ -19,10 +19,11 @@ const App = () => {
   const handleFireClick = () => {
     //show the video and hide the image and when the Video finish playing then show the image
     setNoVideo(false);
-    setTimeout(() => {
-      setIsVisible(!isVisible);
+    const video = document.querySelector("video");
+    video.addEventListener("ended", () => {
+      setIsVisible(false);
       setNoVideo(true);
-    }, 34500);
+    });
   };
 
   return (
