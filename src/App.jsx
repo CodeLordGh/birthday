@@ -13,13 +13,14 @@ const App = () => {
   const imgs = [img1, img2, img3, img5];
   const [isVisible, setIsVisible] = useState(false);
   const [ready, setReady] = useState(false);
+  const [toDisplay, setToDisplay] = useState(topimage);
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full pt-7 h-[100dvh]">
         {isVisible && <Confetti width={window.innerWidth} />}
-        <div className="text-3xl hidden sm:block">
-          Pease visit with a modile phone!
+        <div className="text-3xl hidden justify-center text-center bg-[#c0f0a0] w-[25%] h-[20%] sm:flex items-center">
+          <p className="text-center">Pease visit with a modile phone!</p>
         </div>
         {!ready ? (
           <div className="flex flex-col justify-center sm:hidden">
@@ -37,7 +38,7 @@ const App = () => {
         ) : (
           <div className="sm:hidden w-[100dvw] h-[80vh] object-cover flex flex-col justify-center">
             <img
-              src={isVisible ? img6 : topimage}
+              src={isVisible ? img6 : toDisplay}
               alt="top image"
               className="object-contain w-[100%] h-[70%] rounded-lg"
             />
@@ -66,12 +67,17 @@ const App = () => {
                     love you deeply. You are my everything, and I am so grateful
                     for you. Happy Birthday, my love. Can't wait to hold you
                     soon. <p>Forever yours,</p>
-                    <p>Kash</p>
+                    <p className="underline text-[#333] font-bold">Kash</p>
                   </p>
                 </div>
               ) : (
                 imgs.map((img) => (
-                  <img key={img} src={img} className="p-0 m-0" />
+                  <img
+                    key={img}
+                    src={img}
+                    className="w-[100%]cursor-pointer"
+                    onClick={() => setToDisplay(img)}
+                  />
                 ))
               )}
             </div>
