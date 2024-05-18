@@ -22,7 +22,7 @@ const App = () => {
           Pease visit with a modile phone!
         </div>
         {!ready ? (
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center sm:hidden">
             <img src={img7} alt="topimage" />
             <p className="text-3xl text-center font-extrabold text-[#333]">
               Are you ready to Celebrate?
