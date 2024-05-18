@@ -22,7 +22,7 @@ const App = () => {
     setTimeout(() => {
       setIsVisible(!isVisible);
       setNoVideo(true);
-    }, 33500);
+    }, 34500);
   };
 
   return (
