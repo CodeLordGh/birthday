@@ -5,7 +5,7 @@ import img3 from "./assets/Frame6.svg";
 import img5 from "./assets/Frame0.svg";
 import img6 from "./assets/peris.jpg";
 import img7 from "./assets/smile.svg";
-
+import View from "./assets/birthdaysong.mp4";
 import { useState } from "react";
 import Confetti from "react-confetti";
 
@@ -14,6 +14,16 @@ const App = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [ready, setReady] = useState(false);
   const [toDisplay, setToDisplay] = useState(topimage);
+  const [noVideo, setNoVideo] = useState(true);
+
+  const handleFireClick = () => {
+    //show the video and hide the image and when the Video finish playing then show the image
+    setNoVideo(false);
+    setTimeout(() => {
+      setIsVisible(!isVisible);
+      setNoVideo(true);
+    }, 33500);
+  };
 
   return (
     <>
@@ -37,11 +47,20 @@ const App = () => {
           </div>
         ) : (
           <div className="sm:hidden w-[100dvw] h-[80vh] object-cover flex flex-col justify-center">
-            <img
-              src={isVisible ? img6 : toDisplay}
-              alt="top image"
-              className="object-contain w-[100%] h-[70%] rounded-lg"
-            />
+            {noVideo ? (
+              <img
+                src={isVisible ? img6 : toDisplay}
+                alt="top image"
+                className="object-contain w-[100%] h-[70%] rounded-lg"
+              />
+            ) : (
+              <video
+                className="w-[100%] h-[70%] rounded-lg"
+                src={View}
+                autoPlay
+              />
+            )}
+
             <h1 className="text-center font-extrabold text-3xl text-[#333]">
               Happy Birthday!
             </h1>
@@ -50,7 +69,7 @@ const App = () => {
             </h2>
             <button
               className="bg-[#ED2B5C] px-4 py-2 rounded-md mx-2 text-white font-bold mt-2"
-              onClick={() => setIsVisible(!isVisible)}
+              onClick={() => handleFireClick()}
             >
               Fire 🔥
             </button>
