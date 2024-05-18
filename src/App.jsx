@@ -93,6 +93,7 @@ const App = () => {
               ) : (
                 imgs.map((img) => (
                   <img
+                    loading="lazy"
                     key={img}
                     src={img}
                     className="w-[100%]cursor-pointer"
